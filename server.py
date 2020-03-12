@@ -43,6 +43,9 @@ if __name__ == "__main__":
 				CONNECTION_LIST.append(sockfd)
 				print("Client (%s, %s) connected" % addr)
 				message2 = "[%s:%s] entered room\n" % addr
+				with open('splash.seq', encoding="petscii-c64en-lc") as f:
+					for line in f:
+						sockfd.send(line.encode("petscii-c64en-lc"))
 				
 				broadcast_data(sockfd, message2.encode("petscii-c64en-lc"))
 			
